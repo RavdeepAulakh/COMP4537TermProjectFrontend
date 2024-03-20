@@ -5,6 +5,7 @@ import Login from './pages/login';
 import UserPage from './pages/userPage'
 import Index from './pages/index'
 import Navbar from "./components/navbar";
+import AdminDashboard from './pages/adminDashboard';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/signup" element={<Signup/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/userPage" element={<UserPage/>}/>
+                <Route path='/adminDashboard' element={<AdminDashboard/>}/>
             </Routes>
         </Router>
     );
