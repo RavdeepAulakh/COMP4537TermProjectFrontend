@@ -30,13 +30,30 @@
     padding: 0.5rem; /* Add padding to make the hover background bigger */
 }
 
-.navbar-nav li a {
+.navbar-nav li a,
+.navbar-nav li button { /* Apply same styles to links and buttons */
     color: white;
     text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+.navbar-nav li button { /* Specific styles for button to override user-agent styles */
+    outline: none;
 }
 
 .navbar-nav li:hover {
     background-color: #555; /* Change this color to your preference */
     border-radius: 5px; /* Adjust the border-radius as needed */
     transition: background-color 0.3s ease; /* Smooth transition for the background color */
+}
+
+/* Focus styles for accessibility */
+.navbar-nav li a:focus,
+.navbar-nav li button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -1px;
 }

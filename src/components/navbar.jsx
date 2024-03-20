@@ -25,11 +25,13 @@ function Navbar() {
                 {isLoggedIn ? (
                     <>
                         <li><Link to="/userPage">UserPage</Link></li>
-                        <li><a href="#" onClick={logout}>Logout</a></li>
+                        <li>
+                            <button onClick={logout}>Logout</button>
+                        </li>
                     </>
                 ) : (
                     <>
-                        <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/login">Login</Link></li>
                         <li><Link to="/signup">Signup</Link></li>
                     </>
                 )}
