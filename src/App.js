@@ -8,7 +8,7 @@ import Index from './pages/index';
 import Navbar from './components/navbar';
 import Email from './pages/email/email';
 import Code from './pages/email/code';
-
+import Setpassword from "./pages/email/setpassword";
 function App() {
     return (
         <PasswordRecoveryProvider>
@@ -21,6 +21,7 @@ function App() {
                     <Route path="/userPage" element={<UserPage />} />
                     <Route path="/recover-password" element={<Email />} />
                     <Route path="/recover-password/code" element={<Code />} />
+                    <Route path="/recover-password/set-password" element={<Setpassword />} />
                 </Routes>
             </Router>
         </PasswordRecoveryProvider>

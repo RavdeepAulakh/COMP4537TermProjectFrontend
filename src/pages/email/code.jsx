@@ -29,7 +29,7 @@ function Code() {
 
             if (response.ok) {
                 console.log(data.message);
-                navigate('/recover-password/setPassword', { state: { code } }); // Use navigate for redirection
+                navigate('/recover-password/setPassword', { state: { email,code } }); // Use navigate for redirection
             } else {
                 console.error(data.message);
             }
