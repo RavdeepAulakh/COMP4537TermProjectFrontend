@@ -1,0 +1,62 @@
+.index-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.index-page h1 {
+    font-size: 3rem;
+    color: #212529;
+    margin-bottom: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.index-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.index-buttons button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-grow: 1;
+}
+
+.index-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.index-buttons button a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .index-page h1 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    .index-buttons {
+        flex-direction: column;
+    }
+
+    .index-buttons button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}

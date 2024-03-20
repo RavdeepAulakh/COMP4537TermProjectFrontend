@@ -1,0 +1,66 @@
+.user-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.user-page-title {
+    font-size: 2.5rem;
+    color: #212529;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.user-page-content {
+    font-size: 1.2rem;
+    color: #212529;
+}
+
+.user-page-input {
+    padding: 20px; /* Vertical padding makes the input taller */
+    font-size: 1rem;
+    line-height: 1.5; /* This increases the line height inside the input */
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 100%; /* Set to full width */
+    max-width: 500px; /* Maximum width of input */
+    box-sizing: border-box; /* Include padding and border in the input's total width and height */
+}
+
+.user-page-submit {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 20px; /* Match the input's vertical padding */
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Set to full width */
+    max-width: 500px; /* Ensure the button is as wide as the input */
+    box-sizing: border-box;
+}
+
+.user-page-submit:hover {
+    background-color: #0056b3;
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

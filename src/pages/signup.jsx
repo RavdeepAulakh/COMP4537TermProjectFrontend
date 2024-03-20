@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
+import '../styles/signup.css'; // Import the CSS file
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -36,16 +37,16 @@ function Signup() {
   };
 
   return (
-    <div className="container">
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-        <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
-        <button type="submit">Signup</button>
-      </form>
-      <p>Already have an account? <Link to="/login">Login</Link></p>
-    </div>
+      <div className="signup-container">
+        <h2 className="signup-title">Signup</h2>
+        <form className="signup-form" onSubmit={handleSubmit}>
+          <input className="signup-input" type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
+          <input className="signup-input" type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+          <input className="signup-input" type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
+          <button className="signup-button" type="submit">Signup</button>
+        </form>
+        <p className="signup-login-link">Already have an account? <Link to="/login">Login</Link></p>
+      </div>
   );
 }
 
