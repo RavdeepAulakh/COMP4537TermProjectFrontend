@@ -1,15 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { logout } from '../auth/auth'; // Import the logout function
 import '../styles/navbar.css';
 
 function Navbar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const location = useLocation(); // Add this line
 
     useEffect(() => {
         const token = sessionStorage.getItem('token');
         setIsLoggedIn(!!token); // Update the state based on the presence of a token
-    }, []);
+    }, [location]); // Add location as a dependency
 
     return (
         <nav className="navbar">
