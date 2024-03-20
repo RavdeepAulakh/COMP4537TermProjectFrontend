@@ -5,7 +5,7 @@ function AdminDashboard() {
 
   useEffect(() => {
     // Fetch all users' API calls data
-    fetch('http://localhost:8000/admin', {
+    fetch('https://comp-4537-term-project-backend.vercel.app/admin', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${sessionStorage.getItem('token')}`
