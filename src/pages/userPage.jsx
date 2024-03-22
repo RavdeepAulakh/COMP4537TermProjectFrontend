@@ -5,6 +5,7 @@ function UserPage() {
     const [apiCallsLeft, setApiCallsLeft] = useState(null);
     const [inputValue, setInputValue] = useState(''); // State for input value
     const [isSubmitting, setIsSubmitting] = useState(false); // State to handle loading for POST request
+    const [summary, setSummary] = useState(null); // State for summary text
 
     useEffect(() => {
         // Check if the user is logged in as a user
@@ -39,24 +40,22 @@ function UserPage() {
         e.preventDefault();
         setIsSubmitting(true); // Set submitting to true while waiting for the response
         try {
-            // Replace 'your-backend-api-url' with your actual backend API URL
-            const response = await fetch('your-backend-api-url', {
+            const response = await fetch('https://6955-24-84-205-84.ngrok-free.app/summarize', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${sessionStorage.getItem('token')}` // Include the token if needed
                 },
-                body: JSON.stringify({ input: inputValue })
+                body: JSON.stringify({ text: inputValue }), // Send the text input as JSON
             });
             const data = await response.json();
-            console.log('Response from backend:', data);
-            // Handle the response data as needed
+            console.log('Response from LLM:', data);
+            setSummary(data[0].summary_text); // Set the summary in state
             setIsSubmitting(false); // Set submitting to false after receiving the response
         } catch (error) {
             console.error('Error sending data:', error.message);
             setIsSubmitting(false); // Set submitting to false even if there is an error
         }
-    };
+    };    
 
     return (
         <div className="user-page-container">
@@ -75,6 +74,12 @@ function UserPage() {
                 <div className="loading-spinner"></div>
             ) : (
                 <p className="user-page-content">API Calls Left: {apiCallsLeft}</p>
+            )}
+            {summary && (
+                <div className="summary-container">
+                    <h3>Summary:</h3>
+                    <p>{summary}</p>
+                </div>
             )}
         </div>
     );
