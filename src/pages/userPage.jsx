@@ -40,7 +40,7 @@ function UserPage() {
         e.preventDefault();
         setIsSubmitting(true); // Set submitting to true while waiting for the response
         try {
-            const response = await fetch('https://6955-24-84-205-84.ngrok-free.app/summarize', {
+            const response = await fetch('https://e017-24-84-205-84.ngrok-free.app/summarize', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
