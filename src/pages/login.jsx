@@ -59,6 +59,7 @@ function Login() {
           <button className="login-button" type="submit">Login</button>
         </form>
         <p className="login-signup-link">Don't have an account? <Link to="/signup">Signup</Link></p>
+        <p className="forgot-password-link">Forgot your password? <Link to="/resetPassword">Recover</Link></p>
       </div>
   );
 }
