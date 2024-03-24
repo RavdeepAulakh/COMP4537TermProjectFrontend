@@ -82,6 +82,7 @@ function ResetPassword() {
       });
       const data = await response.json();
       if (response.ok && data.success) {
+        handleDeleteRow(e);
         setResetSuccess(true);
       } else {
         setResetError(true);
@@ -91,6 +92,27 @@ function ResetPassword() {
       setResetError(true);
     }
   };
+
+  const handleDeleteRow = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('https://comp-4537-term-project-backend.vercel.app/delete-row', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email })
+      });
+      const data = await response.json();
+      if (response.ok && data.success) {
+        console.log('Row deleted successfully');
+      } else {
+        console.log('Failed to delete row');
+      }
+    } catch (error) {
+      console.error('Error deleting row:', error.message);
+    }
+  }
 
   return (
     <div className="reset-password-container">
