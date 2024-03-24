@@ -74,7 +74,7 @@ function ResetPassword() {
     e.preventDefault();
     try {
       const response = await fetch('http://localhost:8000/reset-password', {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
         },
