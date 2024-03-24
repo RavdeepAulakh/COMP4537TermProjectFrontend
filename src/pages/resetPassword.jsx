@@ -25,7 +25,7 @@ function ResetPassword() {
   const handleSendCode = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/password-recovery', {
+      const response = await fetch('https://comp-4537-term-project-backend.vercel.app/password-recovery', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ function ResetPassword() {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:8000/verify-code', {
+      const response = await fetch('https://comp-4537-term-project-backend.vercel.app/verify-code', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ function ResetPassword() {
   const handleResetPassword = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/reset-password', {
+      const response = await fetch('https://comp-4537-term-project-backend.vercel.app/reset-password', {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
