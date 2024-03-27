@@ -18,9 +18,10 @@ function UserPage() {
             // Fetch user's API calls left
             fetch('https://comp-4537-term-project-backend.vercel.app/api-calls', {
                 method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${sessionStorage.getItem('token')}` // Retrieve token from cookie
-                }
+                credentials: 'include'
+                // headers: {
+                //     'Authorization': `Bearer ${sessionStorage.getItem('token')}` // Retrieve token from cookie
+                // }
             })
                 .then(response => response.json())
                 .then(data => {
