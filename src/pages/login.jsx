@@ -19,6 +19,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      //http://localhost:8000/login
       const response = await fetch('https://comp-4537-term-project-backend.vercel.app/login', {
         method: 'POST',
         headers: {
@@ -38,7 +39,7 @@ function Login() {
       // Store userId and role in sessionStorage
       sessionStorage.setItem('userId', data.userId);
       sessionStorage.setItem('role', data.role);
-      // sessionStorage.setItem('token', data.token);
+      sessionStorage.setItem('token', data.token);
 
       // Redirect to user page if the role is USER
       if (data.role === 'USER') {
