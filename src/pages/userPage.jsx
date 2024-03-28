@@ -15,23 +15,24 @@ function UserPage() {
             // Redirect to login page or another appropriate page
             window.location.href = '/login';
         } else {
-            // Fetch user's API calls left
-            fetch('https://comp-4537-term-project-backend.vercel.app/api-calls', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${sessionStorage.getItem('token')}` // Retrieve token from cookie
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://comp-4537-term-project-backend.vercel.app/api-calls');
+            xhr.withCredentials = true; 
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        console.log('API Calls Left:', response.calls);
+                        setApiCallsLeft(response.calls);
+                    } else {
+                        console.error('Error fetching API calls:', xhr.statusText);
+                    }
                 }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('API Calls Left:', data.calls);
-                    setApiCallsLeft(data.calls);
-                })
-                .catch(error => {
-                    console.error('Error fetching API calls:', error.message);
-                });
+            };
+            xhr.send();
         }
     }, []);
+    
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
@@ -58,7 +59,7 @@ function UserPage() {
 
             console.log("Making post to LLM")
             // Call the hosted LLM
-            const llmResponse = await fetch('https://d155-24-84-205-84.ngrok-free.app/v1/summarize', {
+            const llmResponse = await fetch('https://36f4-24-84-205-84.ngrok-free.app/v1/summarize', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -71,7 +72,7 @@ function UserPage() {
 
             console.log("Making request to server")
             // Decrement the API calls count
-            const apiCallsDownResponse = await fetch('http://localhost:8000/v1/api-calls-down', {
+            const apiCallsDownResponse = await fetch('http://comp-4537-term-project-backend.vercel.app/v1/api-calls-down', {
                 method: 'PATCH',
                 headers: {
                     'Authorization': `Bearer ${sessionStorage.getItem('token')}`

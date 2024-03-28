@@ -19,39 +19,47 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://comp-4537-term-project-backend.vercel.app/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData),
-        credentials: 'include'
-      });
-      const data = await response.json();
-      console.log('Login response:', data);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://comp-4537-term-project-backend.vercel.app/login', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.withCredentials = true;
 
-      if (data.error) {
-        setLoginError(true); // Set the error state if there's an error in the response
-        return; // Don't proceed further if there's an error
-      }
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    console.log('Login response:', data);
 
-      // Store userId and role in sessionStorage
-      sessionStorage.setItem('userId', data.userId);
-      sessionStorage.setItem('role', data.role);
-      // sessionStorage.setItem('token', data.token);
+                    if (data.error) {
+                        setLoginError(true); // Set the error state if there's an error in the response
+                        return; // Don't proceed further if there's an error
+                    }
 
-      // Redirect to user page if the role is USER
-      if (data.role === 'USER') {
-        navigate('/UserPage');
-      }
+                    // Store userId and role in sessionStorage
+                    sessionStorage.setItem('userId', data.userId);
+                    sessionStorage.setItem('role', data.role);
+                    sessionStorage.setItem('token', data.token);
 
-      if (data.role === 'ADMIN') {
-        navigate('/AdminDashboard')
-      }
+                    // Redirect to user page if the role is USER
+                    if (data.role === 'USER') {
+                        navigate('/UserPage');
+                    }
+
+                    if (data.role === 'ADMIN') {
+                        navigate('/AdminDashboard')
+                    }
+                } else {
+                    console.error('Error logging in:', xhr.statusText);
+                }
+            }
+        };
+
+        xhr.send(JSON.stringify(formData));
     } catch (error) {
-      console.error('Error logging in:', error.message);
+        console.error('Error logging in:', error.message);
     }
-  };
+};
+
 
   return (
       <div className="login-container">

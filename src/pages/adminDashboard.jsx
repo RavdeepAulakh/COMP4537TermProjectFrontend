@@ -7,9 +7,7 @@ function AdminDashboard() {
     // Fetch all users' API calls data
     fetch('https://comp-4537-term-project-backend.vercel.app/admin', {
       method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
-      }
+      credentials: 'include'
     })
     .then(response => response.json())
     .then(data => {
